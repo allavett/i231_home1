@@ -15,24 +15,27 @@ public class Balls {
    }
    
    public static void reorder (Color[] balls) {
-      int len = balls.length;
-      int first = 0;
-      int last = len - 1;
+      int len = balls.length; // Getting array length
+      int first = 0;          // First item index
+      int last = len - 1;     // Last item index
 
       while (first < last) {
-         Color fItem = balls[first];
-         Color lItem = balls[last];
+         Color fItem = balls[first];   // First item value
+         Color lItem = balls[last];    // Last item value
+         /* If first item is not red go and do stuff */
          if (fItem != Color.red){
+            /* Loop while last index > first index AND last item is green */
             while (last > first && lItem == Color.green) {
-               last--;
-               lItem = balls[last];
+               last--;              // Decrease last item index
+               lItem = balls[last]; // Assign new value to last item
             }
+            /* If first item is not the same as last item, switch colors */
             if (fItem != lItem) {
                balls[last] = Color.green;
                balls[first] = Color.red;
             }
          }
-         first++;
+         first++; // Increase first itme index
       }
    }
 }
